@@ -16,7 +16,7 @@ const adminNewUserConfirmPassword: HTMLInputElement = document.querySelector('#u
 const adminAddNewUser = document.querySelector('.add-new-user');
 
 const modalUserSaveBtn = document.querySelector('.save-user-edit');
-const modalUserLogin: HTMLInputElement = document.querySelector('#modal-user-edit-login');
+const modalUserConfirmPassword: HTMLInputElement = document.querySelector('#modal-user-edit-confirm-password');
 const modalUserPassword: HTMLInputElement = document.querySelector('#modal-user-edit-password');
 
 interface IUser {
@@ -145,10 +145,8 @@ class User {
         this.createUserTable(newUser);
     }
 
-    userEditInfo(newLogin: string, newPassword: string): void {
-        (this.selectedItem.target as any).parentElement.parentElement.querySelector('#user-login').value = newLogin;
+    userEditInfo(newPassword: string, newConfirmPassword: string): void {
         (this.selectedItem.target as any).parentElement.parentElement.querySelector('#password-login').value = newPassword;
-        account[account.indexOf(this.selectedUser)].nickname = newLogin;
         account[account.indexOf(this.selectedUser)].password = newPassword;
         localStorage.setItem('users', JSON.stringify(account));
         alert('The change was successful!!!')
@@ -198,7 +196,7 @@ adminAddNewUser?.addEventListener('click', (e) => {
 })
 
 modalUserSaveBtn?.addEventListener('click', (e) => {
-    if (modalUserLogin.value != "" && modalUserPassword.value != "") {
-        users.userEditInfo(modalUserLogin.value, modalUserPassword.value);
+    if (modalUserConfirmPassword.value != "" && modalUserPassword.value != "" && modalUserPassword.value == modalUserConfirmPassword.value) {
+        users.userEditInfo(modalUserPassword.value, modalUserConfirmPassword.value);
     }
 })

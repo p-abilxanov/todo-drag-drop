@@ -18,6 +18,7 @@ const modalDescription: HTMLInputElement = document.querySelector('#validationTo
 const productTabMain = document.querySelectorAll('.lookbookItems .tab-pane .tab-main-inner');
 const indexProduct: Element = document.querySelector('.main-product');
 
+
 const productViewBannerTitle = document.querySelector('#banner__subtitle');
 const imgZoom = document.querySelector('#img-zoom-container img');
 const productViewTitle = document.querySelector('#product__title');
@@ -232,6 +233,10 @@ class Product {
     private productChangeModal(item: IDataBase, e: MouseEvent) {
         this.selectedProduct = item;
         this.selectedItem = e;
+        modalTitle.value = `${item.name}`;
+        modalPrice.value = `${item.price}`;
+        modalDiscount.value = `${item.discount}`;
+        modalDescription.value = `${item.description}`;
     }
 
     changeInfo(): void {
