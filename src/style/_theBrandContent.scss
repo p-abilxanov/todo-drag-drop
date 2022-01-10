@@ -1,0 +1,35 @@
+.content {
+    .content__img {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+        &:last-child {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    .content__title,
+    .content__subtitle {
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+    }
+
+    .content__title {
+        color: rgb(87, 81, 83);
+        line-height: 1.111;
+    }
+    .content__subtitle {
+        color: rgb(114, 114, 114);
+        line-height: 1.538;
+    }
+    .content__text {
+        font-family: 'Roboto';
+        color: rgb(142, 140, 140);
+        line-height: 1.467;
+        a {
+            color: #00c8c8;
+        }
+    }
+}

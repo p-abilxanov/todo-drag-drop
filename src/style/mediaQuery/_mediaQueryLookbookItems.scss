@@ -1,0 +1,280 @@
+@media only screen and (min-width: 992px) {
+    .lookbookItems {
+        padding: 0 15px;
+        .tab-main-inner {
+            grid-gap: 15px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            .tabs-item-img {
+                height: 100%;
+            }
+            .tabs-item {
+                .tabs-advertise-title {
+                    padding: 15px 0;
+                    font-size: 36px;
+                }
+                .tabs-advertise-subtitle {
+                    padding: 5px 0;
+                    font-size: 11px;
+                }
+                .tabs-advertise-text {
+                    max-width: 45%;
+                    font-size: 11px;
+                    span {
+                        padding: 5px 0;
+                    }
+                }
+                .tabs-advertise-btn {
+                    padding: 10px 0;
+                    button {
+                        padding: 10px 15px;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .tabs-advertise,
+            .tabs-advertise-new {
+                padding: 20px 10px;
+            }
+            .tabs-advertise {
+                grid-column: span 2;
+                background: url(../image/lookbookItem.png);
+                background-size: auto 100%;
+                background-position: center center;
+            }
+            .tabs-advertise-new {
+                grid-column: span 3;
+                background: url(../image/lookbookItemNewLook.png);
+                background-size: auto 100%;
+                background-position: center center;
+                .tabs-advertise-new-look {
+                    span {
+                        &:nth-child(1) {
+                            font-size: 120px;
+                        }
+                        &:nth-child(2) {
+                            font-size: 48px;
+                        }
+                    }
+                }
+            }
+        }
+        .tabs-item-hover {
+            i {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .lookbookItems {
+        padding: 0 15px;
+        .tab-main-inner {
+            grid-gap: 15px;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            .tabs-item-img {
+                height: 100%;
+            }
+            .tabs-item {
+                .tabs-advertise-title {
+                    padding: 15px 0;
+                    font-size: 36px;
+                }
+                .tabs-advertise-subtitle {
+                    padding: 5px 0;
+                    font-size: 11px;
+                }
+                .tabs-advertise-text {
+                    max-width: 60%;
+                    font-size: 11px;
+                    span {
+                        padding: 5px 0;
+                    }
+                }
+                .tabs-advertise-btn {
+                    padding: 10px 0;
+                    button {
+                        padding: 10px 15px;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .tabs-advertise,
+            .tabs-advertise-new {
+                padding: 20px 10px;
+            }
+            .tabs-advertise {
+                grid-column: span 2;
+                background: url(../image/lookbookItem.png);
+                background-size: auto 100%;
+                background-position: center center;
+                & + .tabs-item {
+                    grid-row: 1;
+                }
+            }
+            .tabs-advertise-new {
+                grid-column: span 3;
+                background: url(../image/lookbookItemNewLook.png);
+                background-size: auto 100%;
+                background-position: center center;
+                .tabs-advertise-new-look {
+                    span {
+                        &:nth-child(1) {
+                            font-size: 120px;
+                        }
+                        &:nth-child(2) {
+                            font-size: 48px;
+                        }
+                    }
+                }
+                & + .tabs-item {
+                    grid-row: 3;
+                }
+            }
+        }
+        .tabs-item-hover {
+            i {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 576px) {
+    .lookbookItems {
+        padding: 0 15px;
+        .tab-main-inner {
+            grid-gap: 15px;
+            grid-template-columns: 1fr 1fr;
+
+            .tabs-item-img {
+                height: 100%;
+            }
+            .tabs-item {
+                .tabs-advertise-title {
+                    padding: 15px 0;
+                    font-size: 32px;
+                }
+                .tabs-advertise-subtitle {
+                    max-width: 70%;
+                    padding: 5px 0;
+                    font-size: 11px;
+                }
+                .tabs-advertise-text {
+                    max-width: 70%;
+                    font-size: 11px;
+                    span {
+                        padding: 5px 0;
+                    }
+                }
+                .tabs-advertise-btn {
+                    padding: 10px 0;
+                    button {
+                        padding: 7px 15px;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .tabs-advertise,
+            .tabs-advertise-new {
+                padding: 20px 10px;
+            }
+            .tabs-advertise {
+                background-color: #dbdcde;
+                .tabs-advertise-text {
+                    max-width: 100%;
+                }
+            }
+            .tabs-advertise-new {
+                grid-column: span 2;
+                background: url(../image/lookbookItemNewLook.png);
+                background-size: auto 120%;
+                background-position: 20% center;
+                background-repeat: no-repeat;
+                .tabs-advertise-title {
+                    white-space: nowrap;
+                }
+                .tabs-advertise-new-look {
+                    span {
+                        &:nth-child(1) {
+                            font-size: 70px;
+                        }
+                        &:nth-child(2) {
+                            font-size: 32px;
+                        }
+                    }
+                }
+                & + .tabs-item {
+                    grid-row: 4;
+                }
+            }
+        }
+        .tabs-item-hover {
+            i {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .lookbookItems {
+        padding: 0 calc(0.2em + 2vw);
+        .tab-main-inner {
+            grid-gap: calc(0.2em + 2vw);
+            grid-template-columns: 1fr 1fr;
+
+            .tabs-item-img {
+                width: 100%;
+                height: 100%;
+                @include flexbox(null, center, center);
+                background-color: #f8f8f8;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .tabs-item {
+                .tabs-advertise-title {
+                    padding: calc(0.2em + 2vw) 0;
+                    font-size: calc(0.4em + 3vw);
+                }
+                .tabs-advertise-subtitle {
+                    padding: calc(0.1em + 0.5vw) 0;
+                    font-size: calc(0.2em + 1.5vw);
+                }
+                .tabs-advertise-text {
+                    font-size: calc(0.2em + 1.5vw);
+                }
+                .tabs-advertise-btn {
+                    padding: calc(0.2em + 1.5vw) 0;
+                    button {
+                        padding: calc(0.1em + 0.5vw) calc(0.2em + 2vw);
+                        font-size: calc(0.2em + 2vw);
+                    }
+                }
+            }
+            .tabs-advertise,
+            .tabs-advertise-new {
+                background-color: #dbdcde;
+                padding: calc(0.3em + 2.5vw) calc(0.2em + 1.5vw);
+            }
+            .tabs-advertise-new {
+                grid-column: span 2;
+                .tabs-advertise-new-look {
+                    display: none;
+                }
+                & + .tabs-item {
+                    grid-row: 4;
+                }
+            }
+        }
+        .tabs-item-hover {
+            i {
+                margin: 0 calc(0.2em + 2vw);
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+.maps-info {
+    font-family: 'Montserrat';
+    color: rgb(142, 140, 140);
+}
+
+.maps__social {
+    ul {
+        @include flexbox(row, null, center);
+        li {
+            margin: 0 5px;
+            a {
+                display: block;
+                border-radius: 50%;
+                @include flexbox(row, center, center);
+                background-color: rgb(114, 114, 114);
+                color: rgb(255, 255, 255);
+            }
+        }
+    }
+}

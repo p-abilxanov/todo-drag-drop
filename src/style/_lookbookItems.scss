@@ -1,0 +1,76 @@
+.tabs-item-img {
+    cursor: pointer;
+}
+.lookbookItems {
+    .tab-main-inner {
+        display: grid;
+
+        .tabs-item-img {
+            position: relative;
+            @include flexbox(null, center, center);
+            img {
+                height: 100%;
+            }
+        }
+        .tabs-item {
+            .tabs-advertise-title {
+                font-family: 'Montserrat';
+                color: rgb(87, 81, 83);
+                text-transform: uppercase;
+                line-height: 1.125;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .tabs-advertise-subtitle {
+                font-family: 'Montserrat';
+                color: rgb(114, 114, 114);
+                text-transform: uppercase;
+                line-height: 1.538;
+            }
+            .tabs-advertise-text {
+                @include flexbox(column, null, null);
+                font-family: 'Roboto';
+                color: rgb(142, 140, 140);
+                line-height: 1.467;
+            }
+            .tabs-advertise-btn {
+                button {
+                    border: 1px solid rgb(115, 115, 115);
+                    font-family: 'Montserrat';
+                    color: rgb(69, 70, 71);
+                    text-transform: uppercase;
+                    line-height: 1.2;
+                }
+            }
+        }
+
+        .tabs-advertise-new {
+            @include flexbox(null, space-between, null);
+            .tabs-advertise-new-look {
+                align-self: center;
+                span {
+                    display: block;
+                    text-align: right;
+                    font-family: 'Montserrat';
+                    color: rgb(0, 200, 200);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    &:nth-child(1) {
+                        line-height: 1;
+                    }
+                    &:nth-child(2) {
+                        white-space: nowrap;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+    .tabs-item-hover {
+        position: absolute;
+        i {
+            position: static !important;
+        }
+    }
+}

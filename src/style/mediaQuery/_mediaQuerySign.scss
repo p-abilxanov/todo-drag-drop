@@ -1,0 +1,79 @@
+@media only screen and (min-width: 768px) {
+    .sign {
+        padding: 50px 0;
+    }
+    .sign-in,
+    .sign-up {
+        form input:not(#checkbox) {
+            height: 40px;
+            padding: 7px 5px !important;
+        }
+        .form-check {
+            input {
+                margin: 0 5px;
+            }
+            font-size: 12px;
+        }
+    }
+    .sign__title {
+        padding-bottom: 25px;
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 767px) and (min-width: 576px) {
+    .sign {
+        padding: 30px 0;
+    }
+    .sign-in {
+        padding-bottom: 20px;
+    }
+    .sign-in,
+    .sign-up {
+        form input:not(#checkbox) {
+            height: 40px;
+            padding: 7px 5px !important;
+        }
+        .form-check {
+            input {
+                margin: 0 5px;
+            }
+            font-size: 12px;
+        }
+    }
+    .sign__title {
+        padding-bottom: 25px;
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .sign {
+        padding: calc(0.3em + 4vw) 0;
+    }
+    .sign-in {
+        padding-bottom: calc(0.3em + 2vw);
+    }
+    .sign-in,
+    .sign-up {
+        form input:not(#checkbox) {
+            height: calc(0.4em + 5vw);
+            padding: calc(0.1em + 1.5vw) calc(0.1em + 0.6vw) !important;
+            font-size: calc(0.2em + 2vw);
+        }
+        .form-check {
+            input {
+                margin: 0 calc(0.1em + 0.5vw);
+            }
+            font-size: calc(0.2em + 1.7vw);
+        }
+    }
+    .sign__title {
+        padding-bottom: calc(0.3em + 3vw);
+        font-size: calc(0.3em + 2vw);
+    }
+    .form-btn {
+        button,
+        a {
+            font-size: calc(0.2em + 2vw);
+        }
+    }
+}

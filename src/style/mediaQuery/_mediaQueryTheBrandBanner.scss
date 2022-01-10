@@ -1,0 +1,37 @@
+@media only screen and (min-width: 576px) {
+    .brand-banner {
+        .banner__header {
+            padding: 0 15px;
+        }
+
+        .banner__item {
+            padding: 150px 0;
+            .banner__title {
+                font-size: 48px;
+                padding-bottom: 20px;
+            }
+            .banner__subtitle {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .brand-banner {
+        .banner__header {
+            padding: 0 calc(0.2em + 2vw);
+        }
+
+        .banner__item {
+            padding: calc(5em + 10vw) 0;
+            .banner__title {
+                font-size: calc(0.4em + 4vw);
+                padding-bottom: calc(0.2em + 2vw);
+            }
+            .banner__subtitle {
+                font-size: calc(0.3em + 3vw);
+            }
+        }
+    }
+}

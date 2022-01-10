@@ -1,0 +1,11 @@
+@mixin blockSize($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin flexbox($flexDirection, $justifyContent, $alignItems) {
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}

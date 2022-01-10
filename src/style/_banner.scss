@@ -1,0 +1,126 @@
+.banner__header {
+    .banner__logo {
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+
+        a {
+            color: rgb(34, 34, 34);
+        }
+
+        span:nth-child(1) {
+            font-weight: bold;
+        }
+    }
+
+    .banner-search {
+        position: relative;
+        @include flexbox(row, flex-end, center);
+
+        input {
+            border: 1px solid rgb(231, 231, 231);
+            background-color: transparent;
+            outline: none;
+            color: rgb(152, 152, 152);
+            font-family: 'Montserrat';
+        }
+
+        &::after {
+            content: '\f002';
+            font-family: 'Font Awesome 5 Pro';
+            font-style: normal;
+            position: absolute;
+            padding: 0 2px;
+            color: rgb(152, 152, 152);
+            background-color: #f8f8f8;
+        }
+    }
+
+    .nav-link {
+        li {
+            @include flexbox(row, center, center);
+            position: relative;
+
+            .nav-link-name a {
+                font-family: 'Montserrat';
+                color: #222222;
+                text-transform: uppercase;
+                position: relative;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .nav-link-inner {
+        background-color: #fff;
+        box-shadow: 0 4px 5px rgba($color: #000000, $alpha: 0.2);
+
+        .nav-link-main {
+            @include flexbox(row, null, null);
+
+            .nav-link-item {
+                @include flexbox(column, null, null);
+
+                a,
+                .nav-link-title {
+                    font-family: 'Montserrat';
+                }
+
+                .nav-link-title {
+                    font-weight: 600;
+                    color: rgb(87, 81, 83);
+                    text-transform: uppercase;
+                    line-height: 2.143;
+                }
+
+                a {
+                    color: rgb(114, 114, 114);
+                    line-height: 2.143;
+                }
+            }
+        }
+
+        .nav-link-advertise {
+            padding: 30px;
+            background-color: rgb(51, 51, 51);
+            @include flexbox(column, null, null);
+
+            span {
+                white-space: nowrap;
+                font-size: 32px;
+                font-family: 'Montserrat';
+                color: rgb(255, 255, 255);
+                text-transform: uppercase;
+            }
+
+            span:nth-child(1) {
+                font-weight: 900;
+            }
+
+            span:nth-child(1) {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.banner__main {
+    @include flexbox(row, flex-end, flex-end);
+
+    button {
+        font-family: 'Montserrat';
+        color: rgb(69, 70, 71);
+        text-transform: uppercase;
+        border: 1px solid rgb(115, 115, 115);
+        transition: color 0.5s, border-color 0.5s;
+
+        &:hover {
+            color: rgb(0, 200, 200);
+            border-color: rgb(0, 200, 200);
+        }
+    }
+}
+
+input[name='hamburger-menu-item'],
+input[name='hamburger-menu'] {
+    display: none;
+}

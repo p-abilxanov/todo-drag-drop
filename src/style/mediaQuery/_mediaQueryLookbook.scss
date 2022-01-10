@@ -1,0 +1,121 @@
+@media only screen and (min-width: 1200px) {
+	.lookbook {
+		@include flexbox(row, space-between, null);
+		padding: 100px 0 50px 0;
+	}
+	.lookbook__item {
+		flex-basis: calc((100% - 40px) / 3);
+		@include flexbox(column, null, flex-end);
+		padding: 40px;
+		text-align: right;
+
+		.lookbook__title {
+			@include flexbox(column, null, flex-end);
+			font-size: 32px;
+		}
+		.lookbook__text {
+			padding: 15px 0;
+			max-width: 200px;
+			font-size: 12px;
+		}
+		.lookbook__btn {
+			button {
+				font-size: 14px;
+				padding: 10px 20px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 920px) {
+	.lookbook {
+		@include flexbox(row, space-between, null);
+		padding: 100px 0 50px 0;
+	}
+	.lookbook__item {
+		flex-basis: calc((100% - 40px) / 3);
+		@include flexbox(column, null, flex-end);
+		padding: 30px;
+		text-align: right;
+
+		.lookbook__title {
+			@include flexbox(column, null, flex-end);
+			font-size: 28px;
+		}
+		.lookbook__text {
+			padding: 15px 0;
+			max-width: 17vw;
+			font-size: 12px;
+		}
+		.lookbook__btn {
+			button {
+				font-size: 14px;
+				padding: 10px 20px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 919px) and (min-width: 576px) {
+	.lookbook {
+		@include flexbox(column, space-between, null);
+		padding: 50px 0 25px 0;
+	}
+	.lookbook__item {
+		margin: 15px 0;
+		@include flexbox(column, null, center);
+		padding: 30px;
+
+		.lookbook__title {
+			@include flexbox(row, center, null);
+			font-size: 28px;
+			span {
+				margin-left: 10px;
+			}
+		}
+		.lookbook__text {
+			padding: 15px 0;
+			max-width: 60%;
+			font-size: 12px;
+			text-align: center;
+		}
+		.lookbook__btn {
+			button {
+				font-size: 14px;
+				padding: 10px 20px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	.lookbook {
+		@include flexbox(column, space-between, null);
+		padding: calc(0.5em + 5vw) 0, calc(0.25em + 25vw) 0;
+	}
+	.lookbook__item {
+		margin: calc(0.2em + 2vw) 0;
+		@include flexbox(column, null, center);
+		padding: calc(0.3em + 3vw);
+
+		.lookbook__title {
+			@include flexbox(row, center, null);
+			font-size: calc(0.3em + 3vw);
+			span {
+				margin-left: calc(0.1em + 2vw);
+			}
+		}
+		.lookbook__text {
+			padding: calc(0.2em + 2vw) 0;
+			max-width: 60%;
+			font-size: calc(0.2em + 1.5vw);
+			text-align: center;
+		}
+		.lookbook__btn {
+			button {
+				font-size: calc(0.2em + 2vw);
+				padding: calc(0.1em + 1.5vw) calc(0.2em + 3vw);
+			}
+		}
+	}
+}
