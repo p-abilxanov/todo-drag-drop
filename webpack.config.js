@@ -1,21 +1,20 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {
+    CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
 
     entry: {
-        index: ['@babel/polyfill', './script/index.ts'],
-        brand: ['@babel/polyfill', './script/brand.ts'],
-        card: ['@babel/polyfill', './script/card.ts'],
-        localstorage: ['@babel/polyfill', './script/local-storage.ts'],
-        productview: ['@babel/polyfill', './script/product-view.ts'],
-        signup: ['@babel/polyfill', './script/signup.ts'],
-        order: ['@babel/polyfill', './script/order.ts'],
+        db: ['@babel/polyfill', './script/db.js'],
+        myProfile: ['@babel/polyfill', './script/myProfile.js'],
+        authorization: ['@babel/polyfill', './script/authorization.js'],
+        permissions: ['@babel/polyfill', './script/permissions.js'],
+        notes: ['@babel/polyfill', './script/notes.js']
     },
 
     output: {
@@ -23,87 +22,43 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/script/')
     },
 
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
-
-    devServer: {
-        port: 4200,
-        hot: true,
-        open: true,
-        watchContentBase: true
-    },
-
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     },
-
 
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
             filename: '../index.html',
-            inject: 'body'
+            chunks: ['db','authorization']
         }),
         new HTMLWebpackPlugin({
-            template: './brand.html',
-            filename: '../brand.html',
-            inject: 'body'
+            template: './notes.html',
+            filename: '../notes.html',
+            chunks: ['notes']
         }),
         new HTMLWebpackPlugin({
-            template: './lookbook.html',
-            filename: '../lookbook.html',
-            inject: 'body'
+            template: './category.html',
+            filename: '../category.html',
+            chunks: ['notes']
         }),
         new HTMLWebpackPlugin({
-            template: './signup.html',
-            filename: '../signup.html',
-            inject: 'body'
+            template: './myProfile.html',
+            filename: '../myProfile.html',
+            chunks: ['myProfile']
         }),
         new HTMLWebpackPlugin({
-            template: './local-stores.html',
-            filename: '../local-stores.html',
-            inject: 'body'
-        }),
-        new HTMLWebpackPlugin({
-            template: './product-view.html',
-            filename: '../product-view.html',
-            inject: 'body'
-        }),
-        new HTMLWebpackPlugin({
-            template: './admin.html',
-            filename: '../admin.html',
-            inject: 'body'
-        }),
-        new HTMLWebpackPlugin({
-            template: './admin-orders.html',
-            filename: '../admin-orders.html',
-            inject: 'body'
-        }),
-        new HTMLWebpackPlugin({
-            template: './admin-products.html',
-            filename: '../admin-products.html',
-            inject: 'body'
+            template: './Permissions.html',
+            filename: '../Permissions.html',
+            chunks: ['permissions']
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [{
-                    from: path.resolve(__dirname, 'src/image/'),
-                    to: path.resolve(__dirname, 'dist/image/')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/css/'),
-                    to: path.resolve(__dirname, 'dist/css/')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/assets/'),
-                    to: path.resolve(__dirname, 'dist/assets/')
-                }
-            ]
-        }),
-        new BundleAnalyzerPlugin()
+                from: path.resolve(__dirname, 'src/css/'),
+                to: path.resolve(__dirname, 'dist/css/')
+            }]
+        })
     ],
     module: {
         rules: [{

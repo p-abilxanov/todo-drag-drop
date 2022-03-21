@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Permissions</title>
+    </head>
+    <body style="background: linear-gradient(135deg, #fff, #70c9f0, #70c9f0, #70c9f0);">
+        <button type="button" class="btn btn-outline-dark" onclick="history.back()">Back</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div style="background-color: #fff; padding: 20px 30px;">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <input type="text" class="form-control" id="input-email" placeholder="Email">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="password" class="form-control modal-user-password" id="inputPassword4">
+                                </div>
+                            </div>
+
+                            <div class="form-row d-flex justify-content-between">
+                                <div class="form-group">
+                                    <input type="checkbox" name="password-show" id="password-show">
+                                    <label for="password-show">Show Password</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="modal-make-admin" id="modal-make-admin">
+                                    <label for="modal-make-admin">Make admin</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="password-generate" id="password-generate">
+                                    <label for="password-generate">Generate</label>
+                                </div>
+                            </div>
+                            <div class="drag-container">
+                                <ul class="drag-list d-flex align-items-stretch w-100">
+                                    <li class="drag-column drag-column-active px-2" style="min-height: 200px; border-right: 1px solid #888;">
+                                        <div class="drag-title text-center py-2">Active</div>
+                                        <ul class="drag-inner-list active-permissions-block" id="1" data-task-status="active"></ul>
+                                    </li>
+                                    <li class="drag-column drag-column-available px-2" style="border-right: 1px solid #888;">
+                                        <div class="drag-title text-center py-2">Available</div>
+                                        <ul class="drag-inner-list" id="2" data-task-status="available"></ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js"></script>
+                            <script>
+                                dragula([document.getElementById('1'), document.getElementById('2')]).on('drag', function (e) {
+                                    e.classList.add('is-moving');
+                                }).on('dragend', function (e) {
+                                    e.classList.remove('is-moving');
+                                }).on('drop', function (e) {
+                                    let activePermissionsBlock = document.querySelectorAll('.active-permissions-block li');
+                                    let activePermissions = (activePermissionsBlock) ? addPermissionsFunction(activePermissionsBlock) : [];
+                                    if (e.parentElement.getAttribute('data-task-status') == 'active') {
+                                        activePermissions.push(`${
+                                            e.getAttribute('data-permission-name')
+                                        }`);
+                                    } else if (e.parentElement.getAttribute('data-task-status') == 'available') {
+                                        activePermissions = activePermissions.filter(item => item != e.getAttribute('data-permission-name'))
+                                    }
+
+
+                                    // DURISTALDI
+                                    let request = window.indexedDB.open('todo')
+
+                                    request.onsuccess = e => {
+                                        let db = e.target.result;
+
+                                        let userId = localStorage.getItem('selected-user-id-permissions')
+
+                                        let tx = db.transaction('users', 'readwrite').objectStore('users');
+                                        let objectStoreRequest = tx.openCursor();
+                                        objectStoreRequest.onsuccess = e => {
+                                            let cursor = e.target.result;
+
+                                            if (cursor) {
+
+                                                if (cursor.value.id == userId) {
+                                                    tx.put({id: cursor.value.id, login: cursor.value.login, password: cursor.value.password, permissions: activePermissions})
+                                                }
+                                                cursor.continue();
+                                            }
+                                        }
+                                    }
+                                });
+
+                                function addPermissionsFunction(items) {
+                                    let text = []
+                                    items.forEach(item => {
+                                        text.push(item.getAttribute('data-permission-name'));
+                                    });
+                                    return text
+                                }
+                            </script>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="modal-save-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div style="width: 50vw; background-color: #fff;">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-6">
+                        <div style="background-color: #fff; padding: 20px 30px;">
+                            <div class="form-row d-flex justify-content-center pb-3">
+                                <h5>User list</h5>
+                            </div>
+                            <ol class="w-100 user-list"></ol>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="background-color: #fff; padding: 20px 30px;">
+                            <div class="form-row d-flex justify-content-center pb-3">
+                                <h5>Add new user</h5>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <input type="text" class="form-control" id="add-new-user-login" placeholder="Email">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <input type="password" class="form-control add-new-user-password" id="inputPassword4">
+                                </div>
+                            </div>
+
+                            <div class="form-row d-flex justify-content-between">
+                                <div class="form-group">
+                                    <input type="checkbox" name="add-new-user-password-show" id="add-new-user-password-show">
+                                    <label for="add-new-user-password-show">Show Password</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="make-admin" id="make-admin">
+                                    <label for="make-admin">Make admin</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="add-new-user-password-generate" id="add-new-user-password-generate">
+                                    <label for="add-new-user-password-generate">Generate</label>
+                                </div>
+                            </div>
+
+                            <div class="form-row d-flex justify-content-center mt-2">
+                                <button class="btn btn-primary mx-2" id="add-new-user">Add user</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
